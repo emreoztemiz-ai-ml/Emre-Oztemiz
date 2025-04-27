@@ -1,4 +1,7 @@
 # Heap Sort Algoritması
+<p align="center">
+  <img src="https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/975b9a6f291ea68f7030426ece9f84840f426be7/heapsort-team.svg" alt="HeapSihirbazi SVG" width="1000" height="650">
+</p>
 
 
 ##  Genel Bakış
