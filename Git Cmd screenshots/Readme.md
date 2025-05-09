@@ -2,8 +2,7 @@
 
 Aşağıda, `Git Cmd screenshots` klasöründeki adım adım işlem görsellerini sıralı şekilde inceleyebilirsiniz:
 
-<details>
-<summary>Görselleri Göster</summary>
+## Görseller:
 
 ### 1
 ![1](https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/refs/heads/main/Git%20Cmd%20screenshots/1.PNG)
@@ -62,4 +61,4 @@ Aşağıda, `Git Cmd screenshots` klasöründeki adım adım işlem görsellerin
 ### 19
 ![19](https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/refs/heads/main/Git%20Cmd%20screenshots/19.PNG)
 
-</details>
+
