@@ -1,34 +1,34 @@
-# Heap Sort Algoritması
+# Heap Sort Algoritması ❓
 <p align="center">
   <img src="https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/975b9a6f291ea68f7030426ece9f84840f426be7/heapsort-team.svg" alt="HeapSihirbazi SVG" width="1100" height="650">
 </p>
 
 
-##📚  Genel Bakış
+## 📚  Genel Bakış
 Heap Sort, karşılaştırmaya dayalı bir sıralama algoritmasıdır ve binary heap veri yapısını kullanır. Özellikle büyük veri kümelerinde etkilidir.
 
-## Algoritma Yapısı
+## Algoritma Yapısı 📚 
 - **Veri Yapısı:** Binary Heap (Max-Heap veya Min-Heap)
 - **Tür:** Karşılaştırmalı Sıralamadır.
 - **Kategori:** Yerinde Sıralama yapar. (In-place)
 
-##  Zaman Karmaşıklığı
+##  Zaman Karmaşıklığı 📚 
 | Durum          | Karmaşıklık |
 |----------------|-------------|
 | En Kötü Durum  | O(n log n)  |
 | Ortalama Durum | O(n log n)  |
 | En İyi Durum   | O(n log n)  |
 
-##  Uzay Karmaşıklığı
+##  Uzay Karmaşıklığı 📚 
 - **O(1)**  Introduction to Algorithms isimli kitapta 396. Sf. da Zamanda ve mekanda önemli önemli asimptotik tasarruf sağladığından bahsetmektedir. Asimptotik verimlilik, bir algoritmanın girdi boyutu sonsuza doğru büyüdükçe nasıl performans gösterdiğini ifade eder.
 Heap Sort, yerinde (in-place) çalışır ve sabit miktarda ekstra bellek kullanır. Bu özellik, büyük veri setleriyle çalışırken önemli bir avantaj sağlar. İn-place çalışması sebebi ile yerinde sıralama yapar.
 
-##  Temel Özellikler
+##  Temel Özellikler 📚 
 - **Kararlı Değil** (Stable sort değil)
 - **Divide and Conquer** yaklaşımı kullanır.
 - **Recursive** veya **iterative** olarak implemente edilebilir.
 
-##⚙️  Çalışma Prensibi
+##  Çalışma Prensibi ⚙️
 1. **Max-Heap Oluşturma:** Dizi max-heap yapısına dönüştürülür.
 2. **Sıralama:** Kök eleman (en büyük) sürekli olarak dizinin sonuna yerleştirilir ve heap yeniden düzenlenir.
 
@@ -40,22 +40,22 @@ Heap Sort, yerinde (in-place) çalışır ve sabit miktarda ekstra bellek kullan
 4. **Dış Sıralama (External Sorting)**: Bellek kapasitesinden daha büyük dosyaları sıralamak için.
 5. **Medyan ve k. en büyük eleman bulma**: Heap yapısı kullanılarak verimli şekilde gerçekleştirilebilir.
 
-## ✅ Avantajlar ve Dezavantajlar
+## ✅ Avantajlar ve Dezavantajlar ❌
 
-### Avantajlar
+### Avantajlar ✔️
 - **Tutarlı Performans**: Her durumda O(n log n) zaman karmaşıklığı sunar.
 - **Bellek Verimliliği**: Yerinde (in-place) çalışır, ek bellek alanı gerektirmez.
 - **Öncelik Kuyruğu Entegrasyonu**: Heap veri yapısı, öncelik kuyrukları için doğal bir temel sağlar.
 - **Büyük Veri Setleri**: Bellek kısıtlaması olan ortamlarda büyük veri setlerini sıralamak için uygundur.
 
-### Dezavantajlar
+### Dezavantajlar ‼️
 
 - ***Algorithms*, Fourth Edition Kitap sf.342, PDF sf.355**: Kullanım yönü ile diğer sıralamalara göre kullanım alanı özellikle aynı değere sahip elemanların sırasını korumaz, yani kararlı değil (Unstable). 
 - **Pratik Uygulamalarda Yavaşlık**: Genellikle Quick Sort ve Merge Sort gibi diğer O(n log n) algoritmalardan daha yavaş çalışır, çünkü sabit faktörleri daha yüksektir.
 - **Önbellek Kullanımı**: Heap yapısı, rastgele erişim modeliyle çalıştığından, modern CPU önbelleklerinde verimsiz olabilir.
 - **Uygulaması Karmaşık**: Quicksort gibi bazı alternatiflere göre uygulaması daha karmaşıktır.
 
-## Performans Karşılaştırması
+## Performans Karşılaştırması 👀
 |Algoritma  |En Kötü Durum| En İyi Durum | Yer karmaşıklığı|
 |-----------|-------------|--------------|-----------------------|
 |Heap Sort	|O(nlogn)     |O(nlogn)      |O(1)
@@ -145,7 +145,7 @@ int main() {
 }
 ```
 
-## Örnek Kod Çıktısı
+## Örnek Kod Çıktısı 🔳
 *  Kac eleman gireceksiniz? 5
 * 5 tane sayi giriniz:
 * 12 5 8 3 10
@@ -153,7 +153,7 @@ int main() {
 * Siralama oncesi dizi: 12 5 8 3 10 
 * Siralama sonrası dizi: 3 5 8 10 12
 
-## TEST KODU 
+## TEST KODU 🔳
 ```cpp
 #include <iostream>
 #include <vector>
@@ -210,7 +210,7 @@ int main() {
     [Server Kurulum](https://github.com/emreoztemiz-ai-ml/cpp-web-deneme)
     
 
-  ## Animasyon
+ ## Animasyon 💿
 
 [![HEAP SORT Animasyonu](https://img.youtube.com/vi/i7xGwTRarl0/0.jpg)](https://www.youtube.com/watch?v=i7xGwTRarl0)
 
@@ -222,3 +222,5 @@ int main() {
 - [Binary Heap - Wikipedia](https://en.wikipedia.org/wiki/Binary_heap)
 - [Sadi Evren Şeker YT](https://www.youtube.com/@Sadievrenseker_BK)
 - [Markdown Kullanımı](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+  :octocat:
