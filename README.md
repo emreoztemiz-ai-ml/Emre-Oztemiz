@@ -223,4 +223,40 @@ int main() {
 - [Sadi Evren Şeker YT](https://www.youtube.com/@Sadievrenseker_BK)
 - [Markdown Kullanımı](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
+## 📁Proje Yapısı
+heapsortprojesi/
+├── Git Cmd screenshots/
+│   ├── 1.PNG
+│   ├── 10.PNG
+│   ├── 11.PNG
+│   ├── 12.PNG
+│   ├── 13.PNG
+│   ├── 14.PNG
+│   ├── 15.PNG
+│   ├── 16.PNG
+│   ├── 17.PNG
+│   ├── 18.PNG
+│   ├── 19.PNG
+│   ├── 2.PNG
+│   ├── 3.PNG
+│   ├── 4.PNG
+│   ├── 5.PNG
+│   ├── 6.PNG
+│   ├── 7.PNG
+│   ├── 8.PNG
+│   ├── 9.PNG
+│   └── Readme.md
+├── heapsort-team.svg
+├── odev.cpp
+├── proje-tanitimi/
+│   ├── finalproje.apk
+│   └── Readme.md
+├── README.md
+├── TEST KODU/
+│   ├── HeapSort-Test.cpp
+│   └── Readme.md
+└── TR-degisken-kullanimi/
+    ├── Readme.md
+    └── turkcedegiskenileheapsort.cpp
+
   :octocat:
