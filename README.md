@@ -266,4 +266,5 @@ Her türlü katkıya açığız! 🚀
 Bir hata mı buldunuz, yeni bir özellik mi eklemek istiyorsunuz? Çekinmeden bir Pull Request oluşturun.
 
 Yapılan katkılar memnuniyetle değerlendirilir. **Teşekkürler!** 🙌
+
   :octocat:
