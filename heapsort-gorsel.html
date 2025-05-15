@@ -206,7 +206,7 @@
             if (heapSteps.length === 0) return;
 
             fill('#2c3e50');
-            text(`Adım: ${currentStep + 1}/${heapSteps.length}`, 20, 30);
+            text(`***Adım***: ${currentStep + 1}/${heapSteps.length}`, 20, 30);
 
             if (currentStep < heapSteps.length) {
                 drawArray(heapSteps[currentStep].arr, heapSteps[currentStep].swapped);
