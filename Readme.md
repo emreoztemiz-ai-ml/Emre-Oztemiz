@@ -15,6 +15,18 @@ Heap Sort algoritmasının çalışma mantığını adım adım gösteren intera
 - **Kullanıcı Dostu Arayüz:** Temiz ve anlaşılır kontrol paneli
 - **Hata Kontrolleri:** Geçersiz girişleri engelleme
 
+## PC Versiyon
+
+
+https://github.com/user-attachments/assets/8788ef87-c12f-4e38-bac6-4bad6d37bc16
+
+
+
+## Mobil Versiyon
+
+
+https://github.com/user-attachments/assets/3e73f575-c9fd-4fce-a460-e9bf78c53e83
+
 
 
 ## 📌 Örnek Girdi/Çıktı
