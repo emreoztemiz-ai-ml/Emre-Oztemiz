@@ -4,8 +4,21 @@
     <meta charset="UTF-8" />
     <title>Heap Sort Heapify Görselleştirme</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-  </head>
-  <body>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+          overflow-x: hidden;
+          background: #f8f8f8;
+        }
+        canvas {
+          display: block;
+          margin: auto;
+        }
+      </style>
+      </head>
+    <body>
     <script>
       let values = [];
       let heapSteps = [];
@@ -102,6 +115,14 @@
           userInput += key;
         }
       }
+function setup() {
+  createCanvas(windowWidth - 40, 400);
+  textSize(16);
+  frameRate(1);
+} 
+function windowResized() {
+  resizeCanvas(windowWidth - 40, 400);
+}
     </script>
   </body>
 </html>
