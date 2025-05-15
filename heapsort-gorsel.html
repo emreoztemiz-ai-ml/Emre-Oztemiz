@@ -10,39 +10,52 @@
       let values = [];
       let heapSteps = [];
       let currentStep = 0;
-      let n = 10;
+      let swappedIndices = [];
+      let inputMode = true;
+      let userInput = "";
 
       function setup() {
-        createCanvas(600, 400);
+        createCanvas(700, 400);
+        textSize(16);
         frameRate(1);
-        for (let i = 0; i < n; i++) {
-          values.push(floor(random(10, 100)));
-        }
-        generateHeapSteps([...values]);
       }
 
       function draw() {
-        background(240);
-        textSize(16);
+        background(245);
+
+        if (inputMode) {
+          fill(0);
+          text("Lütfen sayıları aralarına boşluk koyarak girin ve Enter'a basın:", 20, 50);
+          text(userInput, 20, 80);
+          return;
+        }
+
         fill(0);
-        text("Heapify Adım: " + currentStep, 20, 30);
+        text("Başlangıç dizisi: " + values.join(", "), 20, 30);
+        text("Heapify Adım: " + currentStep, 20, 60);
+
         if (currentStep < heapSteps.length) {
-          drawArray(heapSteps[currentStep]);
+          drawArray(heapSteps[currentStep].arr, heapSteps[currentStep].swapped);
           currentStep++;
         } else {
-          text("Heap tamamlandı!", 20, height - 20);
+          text("✅ Heapify tamamlandı!", 20, height - 20);
+          drawArray(heapSteps[heapSteps.length - 1].arr, []);
           noLoop();
         }
       }
 
-      function drawArray(arr) {
+      function drawArray(arr, swapped) {
         let barWidth = width / arr.length;
         for (let i = 0; i < arr.length; i++) {
-          fill(100, 150, 255);
-          rect(i * barWidth, height - arr[i] * 3, barWidth - 4, arr[i] * 3);
+          if (swapped.includes(i)) {
+            fill(255, 100, 100); // swaplanan eleman: kırmızı
+          } else {
+            fill(100, 150, 255);
+          }
+          rect(i * barWidth, height - arr[i] * 3 - 40, barWidth - 4, arr[i] * 3);
           fill(0);
           textAlign(CENTER);
-          text(arr[i], i * barWidth + barWidth / 2, height - arr[i] * 3 - 5);
+          text(arr[i], i * barWidth + barWidth / 2, height - arr[i] * 3 - 45);
         }
       }
 
@@ -52,9 +65,10 @@
         let right = 2 * i + 2;
         if (left < n && arr[left] > arr[largest]) largest = left;
         if (right < n && arr[right] > arr[largest]) largest = right;
+
         if (largest !== i) {
           [arr[i], arr[largest]] = [arr[largest], arr[i]];
-          steps.push([...arr]);
+          steps.push({ arr: [...arr], swapped: [i, largest] });
           heapify(arr, n, largest, steps);
         }
       }
@@ -62,10 +76,31 @@
       function generateHeapSteps(arr) {
         let steps = [];
         let n = arr.length;
-        for (let i = floor(n / 2) - 1; i >= 0; i--) {
+        for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
           heapify(arr, n, i, steps);
         }
         heapSteps = steps;
+      }
+
+      function keyPressed() {
+        if (inputMode) {
+          if (keyCode === ENTER) {
+            let nums = userInput.trim().split(/\s+/).map(Number);
+            if (nums.length > 0 && nums.every(n => !isNaN(n))) {
+              values = nums;
+              generateHeapSteps([...values]);
+              inputMode = false;
+            }
+          } else if (keyCode === BACKSPACE) {
+            userInput = userInput.slice(0, -1);
+          }
+        }
+      }
+
+      function keyTyped() {
+        if (inputMode && (key >= '0' && key <= '9' || key === ' ')) {
+          userInput += key;
+        }
       }
     </script>
   </body>
