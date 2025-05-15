@@ -1,128 +1,296 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Heap Sort Heapify Görselleştirme</title>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Sort Görselleştirici</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <style>
+        /* Temel Stiller */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-          margin: 0;
-          padding: 0;
-          font-family: sans-serif;
-          overflow-x: hidden;
-          background: #f8f8f8;
-        }
-        canvas {
-          display: block;
-          margin: auto;
-        }
-      </style>
-      </head>
-    <body>
-    <script>
-      let values = [];
-      let heapSteps = [];
-      let currentStep = 0;
-      let swappedIndices = [];
-      let inputMode = true;
-      let userInput = "";
-
-      function setup() {
-        createCanvas(700, 400);
-        textSize(16);
-        frameRate(1);
-      }
-
-      function draw() {
-        background(245);
-
-        if (inputMode) {
-          fill(0);
-          text("Lütfen sayıları aralarına boşluk koyarak girin ve Enter'a basın:", 20, 50);
-          text(userInput, 20, 80);
-          return;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            background: #f0f2f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        fill(0);
-        text("Başlangıç dizisi: " + values.join(", "), 20, 30);
-        text("Heapify Adım: " + currentStep, 20, 60);
-
-        if (currentStep < heapSteps.length) {
-          drawArray(heapSteps[currentStep].arr, heapSteps[currentStep].swapped);
-          currentStep++;
-        } else {
-          text("✅ Heapify tamamlandı!", 20, height - 20);
-          drawArray(heapSteps[heapSteps.length - 1].arr, []);
-          noLoop();
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
-      }
 
-      function drawArray(arr, swapped) {
-        let barWidth = width / arr.length;
-        for (let i = 0; i < arr.length; i++) {
-          if (swapped.includes(i)) {
-            fill(255, 100, 100); // swaplanan eleman: kırmızı
-          } else {
-            fill(100, 150, 255);
-          }
-          rect(i * barWidth, height - arr[i] * 3 - 40, barWidth - 4, arr[i] * 3);
-          fill(0);
-          textAlign(CENTER);
-          text(arr[i], i * barWidth + barWidth / 2, height - arr[i] * 3 - 45);
+        /* Başlık */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-      }
 
-      function heapify(arr, n, i, steps) {
-        let largest = i;
-        let left = 2 * i + 1;
-        let right = 2 * i + 2;
-        if (left < n && arr[left] > arr[largest]) largest = left;
-        if (right < n && arr[right] > arr[largest]) largest = right;
-
-        if (largest !== i) {
-          [arr[i], arr[largest]] = [arr[largest], arr[i]];
-          steps.push({ arr: [...arr], swapped: [i, largest] });
-          heapify(arr, n, largest, steps);
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
-      }
 
-      function generateHeapSteps(arr) {
-        let steps = [];
-        let n = arr.length;
-        for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-          heapify(arr, n, i, steps);
+        /* Giriş Alanı */
+        .input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
         }
-        heapSteps = steps;
-      }
 
-      function keyPressed() {
-        if (inputMode) {
-          if (keyCode === ENTER) {
-            let nums = userInput.trim().split(/\s+/).map(Number);
-            if (nums.length > 0 && nums.every(n => !isNaN(n))) {
-              values = nums;
-              generateHeapSteps([...values]);
-              inputMode = false;
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        #inputField {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        #inputField:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Görselleştirme Alanı */
+        #canvasContainer {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* Bilgi Paneli */
+        .info-panel {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-panel p {
+            margin-bottom: 0.5rem;
+            color: #7f8c8d;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
             }
-          } else if (keyCode === BACKSPACE) {
-            userInput = userInput.slice(0, -1);
-          }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .input-section {
+                padding: 1.5rem;
+            }
         }
-      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Heap Sort Görselleştirici</h1>
+            <p>Max Heap oluşturma sürecini interaktif olarak izleyin</p>
+        </header>
 
-      function keyTyped() {
-        if (inputMode && (key >= '0' && key <= '9' || key === ' ')) {
-          userInput += key;
+        <section class="input-section">
+            <div class="input-group">
+                <label for="inputField">Sayıları girin (boşlukla ayırın):</label>
+                <input type="text" id="inputField" placeholder="Örnek: 5 3 8 1 2">
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="startVisualization()">Başlat</button>
+                <button class="btn btn-secondary" onclick="resetApp()">Sıfırla</button>
+            </div>
+        </section>
+
+        <section id="canvasContainer"></section>
+
+        <div class="info-panel">
+            <p><strong>Çalışma Mantığı:</strong></p>
+            <p>1. Dizi max heap yapısına dönüştürülür</p>
+            <p>2. Kırmızı çubuklar swap edilen elemanları gösterir</p>
+            <p>3. Her adım 1 saniyede gösterilir</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Algoritma Görselleştirme Aracı - Tüm hakları saklıdır</p>
+    </footer>
+
+    <script>
+        let values = [];
+        let heapSteps = [];
+        let currentStep = 0;
+        let isVisualizing = false;
+
+        function setup() {
+            const canvas = createCanvas(windowWidth - 40, 400);
+            canvas.parent('canvasContainer');
+            textSize(16);
+            frameRate(1);
+            noLoop();
         }
-      }
-function setup() {
-  createCanvas(windowWidth - 40, 400);
-  textSize(16);
-  frameRate(1);
-} 
-function windowResized() {
-  resizeCanvas(windowWidth - 40, 400);
-}
+
+        function draw() {
+            background(245);
+            
+            if (heapSteps.length === 0) return;
+
+            fill('#2c3e50');
+            text(`Adım: ${currentStep + 1}/${heapSteps.length}`, 20, 30);
+
+            if (currentStep < heapSteps.length) {
+                drawArray(heapSteps[currentStep].arr, heapSteps[currentStep].swapped);
+                currentStep++;
+            } else {
+                drawArray(heapSteps[heapSteps.length - 1].arr, []);
+                noLoop();
+                isVisualizing = false;
+            }
+        }
+
+        function drawArray(arr, swapped) {
+            const barWidth = width / arr.length;
+            for (let i = 0; i < arr.length; i++) {
+                fill(swapped.includes(i) ? '#e74c3c' : '#3498db');
+                rect(i * barWidth, height - arr[i] * 3 - 40, barWidth - 4, arr[i] * 3);
+                
+                fill('#2c3e50');
+                textAlign(CENTER);
+                text(arr[i], i * barWidth + barWidth/2, height - arr[i] * 3 - 45);
+            }
+        }
+
+        function heapify(arr, n, i, steps) {
+            let largest = i;
+            const left = 2 * i + 1;
+            const right = 2 * i + 2;
+
+            if (left < n && arr[left] > arr[largest]) largest = left;
+            if (right < n && arr[right] > arr[largest]) largest = right;
+
+            if (largest !== i) {
+                steps.push({ arr: [...arr], swapped: [i, largest] });
+                [arr[i], arr[largest]] = [arr[largest], arr[i]];
+                steps.push({ arr: [...arr], swapped: [i, largest] });
+                heapify(arr, n, largest, steps);
+            }
+        }
+
+        function generateHeapSteps(originalArr) {
+            const arr = [...originalArr];
+            const steps = [];
+            steps.push({ arr: [...arr], swapped: [] });
+
+            const n = arr.length;
+            for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+                heapify(arr, n, i, steps);
+            }
+
+            steps.push({ arr: [...arr], swapped: [] });
+            return steps;
+        }
+
+        function startVisualization() {
+            if (isVisualizing) return;
+
+            const input = document.getElementById('inputField').value;
+            const nums = input.trim().split(/\s+/).map(Number).filter(n => !isNaN(n));
+            
+            if (nums.length < 1) {
+                alert('Lütfen geçerli sayılar girin!');
+                return;
+            }
+
+            values = nums;
+            heapSteps = generateHeapSteps(values);
+            currentStep = 0;
+            isVisualizing = true;
+            loop();
+        }
+
+        function resetApp() {
+            values = [];
+            heapSteps = [];
+            currentStep = 0;
+            isVisualizing = false;
+            document.getElementById('inputField').value = '';
+            noLoop();
+            background(245);
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth - 40, 400);
+        }
     </script>
-  </body>
+</body>
 </html>
