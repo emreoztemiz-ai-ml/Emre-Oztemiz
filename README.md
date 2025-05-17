@@ -1,6 +1,6 @@
 # Heap Sort Algoritması ❓
 
-  <img src="https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/975b9a6f291ea68f7030426ece9f84840f426be7/heapsort-team.svg?raw=true" alt="HeapSihirbazi SVG" width="100%" height="auto">
+  <img src="https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/975b9a6f291ea68f7030426ece9f84840f426be7/heapsort-team.svg?raw=true" alt="HeapSihirbazi SVG" width="100%" height="550">
 
 
 
