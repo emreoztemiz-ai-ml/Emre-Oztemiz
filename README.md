@@ -1,6 +1,6 @@
 # Heap Sort Algoritması ❓
 <p align="center">
-  <img src="https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/975b9a6f291ea68f7030426ece9f84840f426be7/heapsort-team.svg" alt="HeapSihirbazi SVG" width="1100" height="650">
+  <img src="https://raw.githubusercontent.com/emreoztemiz-ai-ml/heapsortprojesi/975b9a6f291ea68f7030426ece9f84840f426be7/heapsort-team.svg" alt="HeapSihirbazi SVG" width="650" height="650">
 </p>
 
 
@@ -261,6 +261,12 @@ int main() {
     ├── Readme.md
     └── turkcedegiskenileheapsort.cpp
 ``` </pre>
+
+## Github Sayfa Branch Açıklaması
+Projenin nasıl çalıştığını anlatan ve heapify işlemini öğreten interaktif bir görselleştiriciye ihtiyaç duyulmaktaydı, aşağıda yan dalın Readme dosyasını okuyabilirsiniz.
+
+- [`Readme.md`](https://github.com/emreoztemiz-ai-ml/Emre-Oztemiz/blob/gh-pages/Readme.md)
+
 ## Katkıda Bulun
 Her türlü katkıya açığız! 🚀
 Bir hata mı buldunuz, yeni bir özellik mi eklemek istiyorsunuz? Çekinmeden bir Pull Request oluşturun.
